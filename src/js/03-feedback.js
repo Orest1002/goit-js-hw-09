@@ -3,7 +3,7 @@ import throttle from 'lodash.throttle';
 
 const currentKey = 'feedback-form-state';
 
-form = document.querySelector('.feedback-form');
+ const form = document.querySelector('.feedback-form');
 
 form.addEventListener('input', throttle(onInputData, 500));
 form.addEventListener('submit', onFormSubmit);
@@ -26,12 +26,13 @@ function reloadPage() {
 
 function onFormSubmit(e) {
   e.preventDefault();
-  console.log({ email: email.value, message: message.value });
+  
 
   if (email.value === '' || message.value === '') {
     return alert('Please fill in all the fields!');
-  }
 
+  }
+console.log({ email: email.value, message: message.value });
   localStorage.removeItem(currentKey);
   e.currentTarget.reset();
   dataForm = {};
